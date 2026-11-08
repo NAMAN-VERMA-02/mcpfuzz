@@ -1,0 +1,9 @@
+# Binaries and build output
+/mcpfuzz
+/bin/
+*.exe
+*.test
+*.out
+
+# Scan reports stay local: a report on someone else's server is not ours to publish.
+/reports/
