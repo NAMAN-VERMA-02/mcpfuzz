@@ -1,0 +1,309 @@
+{
+  "verdict": "FINDINGS",
+  "exit_code": 1,
+  "era": "modern",
+  "protocol_version": "2026-07-28",
+  "mode": "passive",
+  "isolated": false,
+  "target": [
+    "D:/mcpfuzz-sandbox/node/node_modules/.bin/mcp-server-everything",
+    "stdio"
+  ],
+  "tools": [
+    {
+      "name": "echo",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get-annotated-message",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get-env",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get-header-params",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get-resource-links",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get-resource-reference",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get-structured-content",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get-sum",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get-tiny-image",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "gzip-file-as-resource",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "trigger-list-changed",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "trigger-log-messages",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "trigger-long-running-operation",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "trigger-resource-update",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "uri (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "toggle-simulated-logging",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "toggle-subscriber-updates",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
+    }
+  ],
+  "checks": [
+    {
+      "id": "modern.discover",
+      "status": "PASS",
+      "detail": "server/discover returned a valid DiscoverResult"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "FINDING",
+      "detail": "tools/list with no _meta: accepted, want error -32602",
+      "evidence": "{\"result\":{\"tools\":[{\"name\":\"echo\",\"title\":\"Echo Tool\",\"description\":\"Echoes back the input string\",\"inputSchema\":{\"type\":\"object\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"properties\"…"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "FINDING",
+      "detail": "tools/list without clientCapabilities: accepted, want error -32602",
+      "evidence": "{\"result\":{\"tools\":[{\"name\":\"echo\",\"title\":\"Echo Tool\",\"description\":\"Echoes back the input string\",\"inputSchema\":{\"type\":\"object\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"properties\"…"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "FINDING",
+      "detail": "tools/list without protocolVersion: accepted, want error -32602",
+      "evidence": "{\"result\":{\"tools\":[{\"name\":\"echo\",\"title\":\"Echo Tool\",\"description\":\"Echoes back the input string\",\"inputSchema\":{\"type\":\"object\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"properties\"…"
+    },
+    {
+      "id": "modern.unsupported-version",
+      "status": "FINDING",
+      "detail": "tools/list with protocol version 1900-01-01: accepted, want error -32022",
+      "evidence": "{\"result\":{\"tools\":[{\"name\":\"echo\",\"title\":\"Echo Tool\",\"description\":\"Echoes back the input string\",\"inputSchema\":{\"type\":\"object\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"properties\"…"
+    },
+    {
+      "id": "unknown-method",
+      "status": "PASS",
+      "detail": "an unknown method: rejected with -32601"
+    },
+    {
+      "id": "tools.list",
+      "status": "FINDING",
+      "detail": "tools/list page 1: resultType must be \"complete\"; tools/list page 1: ttlMs must be a non-negative integer; tools/list page 1: cacheScope must be \"public\" or \"private\""
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "echo",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "get-annotated-message",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "get-env",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "get-header-params",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "get-resource-links",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "get-resource-reference",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "get-structured-content",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "get-sum",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "get-tiny-image",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "gzip-file-as-resource",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "trigger-list-changed",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "trigger-log-messages",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "trigger-long-running-operation",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "trigger-resource-update",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "annotations",
+      "status": "SUSPICIOUS",
+      "tool": "trigger-resource-update",
+      "detail": "claims readOnlyHint, but its name (\"update\") says it changes state; annotations are self-reported and mcpfuzz never relies on them",
+      "evidence": "{\"readOnlyHint\":true,\"destructiveHint\":false,\"idempotentHint\":false,\"openWorldHint\":false}"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "toggle-simulated-logging",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "toggle-subscriber-updates",
+      "detail": "inputSchema is an object schema"
+    }
+  ],
+  "server_stderr": "Starting default (STDIO) server... ",
+  "scanner": "mcpfuzz 0.1.0",
+  "started": "2026-11-25T19:27:18.4695149Z",
+  "seconds": 5.3803847000000005
+}

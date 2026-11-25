@@ -1,0 +1,196 @@
+{
+  "verdict": "FINDINGS",
+  "exit_code": 1,
+  "era": "modern",
+  "protocol_version": "2026-07-28",
+  "mode": "passive",
+  "isolated": false,
+  "target": [
+    "D:/mcpfuzz-sandbox/node/node_modules/.bin/mcp-server-memory"
+  ],
+  "tools": [
+    {
+      "name": "create_entities",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "create_relations",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "add_observations",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "delete_entities",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "delete_observations",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "delete_relations",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "read_graph",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "search_nodes",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "query (command-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "open_nodes",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    }
+  ],
+  "checks": [
+    {
+      "id": "modern.discover",
+      "status": "PASS",
+      "detail": "server/discover returned a valid DiscoverResult"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "FINDING",
+      "detail": "tools/list with no _meta: accepted, want error -32602",
+      "evidence": "{\"result\":{\"tools\":[{\"name\":\"create_entities\",\"title\":\"Create Entities\",\"description\":\"Create multiple new entities in the knowledge graph. An entity whose name already exists, or repeats an earlier e…"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "FINDING",
+      "detail": "tools/list without clientCapabilities: accepted, want error -32602",
+      "evidence": "{\"result\":{\"tools\":[{\"name\":\"create_entities\",\"title\":\"Create Entities\",\"description\":\"Create multiple new entities in the knowledge graph. An entity whose name already exists, or repeats an earlier e…"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "FINDING",
+      "detail": "tools/list without protocolVersion: accepted, want error -32602",
+      "evidence": "{\"result\":{\"tools\":[{\"name\":\"create_entities\",\"title\":\"Create Entities\",\"description\":\"Create multiple new entities in the knowledge graph. An entity whose name already exists, or repeats an earlier e…"
+    },
+    {
+      "id": "modern.unsupported-version",
+      "status": "FINDING",
+      "detail": "tools/list with protocol version 1900-01-01: accepted, want error -32022",
+      "evidence": "{\"result\":{\"tools\":[{\"name\":\"create_entities\",\"title\":\"Create Entities\",\"description\":\"Create multiple new entities in the knowledge graph. An entity whose name already exists, or repeats an earlier e…"
+    },
+    {
+      "id": "unknown-method",
+      "status": "PASS",
+      "detail": "an unknown method: rejected with -32601"
+    },
+    {
+      "id": "tools.list",
+      "status": "FINDING",
+      "detail": "tools/list page 1: resultType must be \"complete\"; tools/list page 1: ttlMs must be a non-negative integer; tools/list page 1: cacheScope must be \"public\" or \"private\""
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "create_entities",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "create_relations",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "add_observations",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "delete_entities",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "delete_observations",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "delete_relations",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "read_graph",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "search_nodes",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "open_nodes",
+      "detail": "inputSchema is an object schema"
+    }
+  ],
+  "server_stderr": "Knowledge Graph MCP Server running on stdio ",
+  "scanner": "mcpfuzz 0.1.0",
+  "started": "2026-11-25T19:27:16.0940233Z",
+  "seconds": 2.2505062000000002
+}

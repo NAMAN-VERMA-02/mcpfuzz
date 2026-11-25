@@ -1,0 +1,71 @@
+{
+  "verdict": "PASS",
+  "exit_code": 0,
+  "era": "modern",
+  "protocol_version": "2026-07-28",
+  "mode": "passive",
+  "isolated": false,
+  "target": [
+    "D:/mcpfuzz-sandbox/uv-bin/mcp-server-fetch.exe"
+  ],
+  "tools": [
+    {
+      "name": "fetch",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true,
+        "readOnlyHint": true
+      },
+      "risky_params": [
+        "url (path-like, unconstrained)"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "modern.discover",
+      "status": "PASS",
+      "detail": "server/discover returned a valid DiscoverResult"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "PASS",
+      "detail": "tools/list with no _meta: rejected with -32602"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "PASS",
+      "detail": "tools/list without clientCapabilities: rejected with -32602"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "PASS",
+      "detail": "tools/list without protocolVersion: rejected with -32602"
+    },
+    {
+      "id": "modern.unsupported-version",
+      "status": "PASS",
+      "detail": "tools/list with protocol version 1900-01-01: rejected with -32022"
+    },
+    {
+      "id": "unknown-method",
+      "status": "PASS",
+      "detail": "an unknown method: rejected with -32601"
+    },
+    {
+      "id": "tools.list",
+      "status": "PASS",
+      "detail": "1 tools over 1 page(s)"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "fetch",
+      "detail": "inputSchema is an object schema"
+    }
+  ],
+  "scanner": "mcpfuzz 0.1.0",
+  "started": "2026-11-25T19:27:23.9589177Z",
+  "seconds": 21.1412989
+}

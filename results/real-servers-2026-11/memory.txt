@@ -1,0 +1,14 @@
+mcpfuzz: FINDINGS (exit 1)
+era: modern (2026-07-28) · passive scan · not isolated · 9 tools
+
+FINDING      modern.missing-meta: tools/list with no _meta: accepted, want error -32602
+             evidence: {"result":{"tools":[{"name":"create_entities","title":"Create Entities","description":"Create multiple new entities in the knowledge graph. An entity whose name already exists, or repeats an earlier e…
+FINDING      modern.missing-meta: tools/list without clientCapabilities: accepted, want error -32602
+             evidence: {"result":{"tools":[{"name":"create_entities","title":"Create Entities","description":"Create multiple new entities in the knowledge graph. An entity whose name already exists, or repeats an earlier e…
+FINDING      modern.missing-meta: tools/list without protocolVersion: accepted, want error -32602
+             evidence: {"result":{"tools":[{"name":"create_entities","title":"Create Entities","description":"Create multiple new entities in the knowledge graph. An entity whose name already exists, or repeats an earlier e…
+FINDING      modern.unsupported-version: tools/list with protocol version 1900-01-01: accepted, want error -32022
+             evidence: {"result":{"tools":[{"name":"create_entities","title":"Create Entities","description":"Create multiple new entities in the knowledge graph. An entity whose name already exists, or repeats an earlier e…
+FINDING      tools.list: tools/list page 1: resultType must be "complete"; tools/list page 1: ttlMs must be a non-negative integer; tools/list page 1: cacheScope must be "public" or "private"
+PASS         11 checks
+hint         search_nodes has query (command-like, unconstrained)

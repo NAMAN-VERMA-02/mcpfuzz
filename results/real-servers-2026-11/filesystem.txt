@@ -1,0 +1,25 @@
+mcpfuzz: FINDINGS (exit 1)
+era: modern (2026-07-28) · passive scan · not isolated · 16 tools
+
+FINDING      modern.missing-meta: tools/list with no _meta: accepted, want error -32602
+             evidence: {"result":{"tools":[{"name":"read_file","title":"Read File (Deprecated)","description":"Read the complete contents of a file as text. DEPRECATED: Use read_text_file instead.","inputSchema":{"type":"ob…
+FINDING      modern.missing-meta: tools/list without clientCapabilities: accepted, want error -32602
+             evidence: {"result":{"tools":[{"name":"read_file","title":"Read File (Deprecated)","description":"Read the complete contents of a file as text. DEPRECATED: Use read_text_file instead.","inputSchema":{"type":"ob…
+FINDING      modern.missing-meta: tools/list without protocolVersion: accepted, want error -32602
+             evidence: {"result":{"tools":[{"name":"read_file","title":"Read File (Deprecated)","description":"Read the complete contents of a file as text. DEPRECATED: Use read_text_file instead.","inputSchema":{"type":"ob…
+FINDING      modern.unsupported-version: tools/list with protocol version 1900-01-01: accepted, want error -32022
+             evidence: {"result":{"tools":[{"name":"read_file","title":"Read File (Deprecated)","description":"Read the complete contents of a file as text. DEPRECATED: Use read_text_file instead.","inputSchema":{"type":"ob…
+FINDING      tools.list: tools/list page 1: resultType must be "complete"; tools/list page 1: ttlMs must be a non-negative integer; tools/list page 1: cacheScope must be "public" or "private"
+PASS         18 checks
+hint         read_file has path (path-like, unconstrained)
+hint         read_text_file has path (path-like, unconstrained)
+hint         read_media_file has path (path-like, unconstrained)
+hint         write_file has path (path-like, unconstrained)
+hint         append_file has path (path-like, unconstrained)
+hint         edit_file has path (path-like, unconstrained)
+hint         create_directory has path (path-like, unconstrained)
+hint         list_directory has path (path-like, unconstrained)
+hint         list_directory_with_sizes has path (path-like, unconstrained)
+hint         directory_tree has path (path-like, unconstrained)
+hint         search_files has path (path-like, unconstrained)
+hint         get_file_info has path (path-like, unconstrained)

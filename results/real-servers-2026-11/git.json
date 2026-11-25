@@ -1,0 +1,307 @@
+{
+  "verdict": "PASS",
+  "exit_code": 0,
+  "era": "modern",
+  "protocol_version": "2026-07-28",
+  "mode": "passive",
+  "isolated": false,
+  "target": [
+    "D:/mcpfuzz-sandbox/uv-bin/mcp-server-git.exe",
+    "--repository",
+    "D:/mcpfuzz-sandbox/work/repo"
+  ],
+  "tools": [
+    {
+      "name": "git_status",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "git_diff_unstaged",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "git_diff_staged",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "git_diff",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "git_commit",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "git_add",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "git_reset",
+      "claimed_annotations": {
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "git_log",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "git_create_branch",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "git_checkout",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "git_merge",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": false
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "git_show",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "git_branch",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "git_remote",
+      "claimed_annotations": {
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "risky_params": [
+        "repo_path (path-like, unconstrained)"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "id": "modern.discover",
+      "status": "PASS",
+      "detail": "server/discover returned a valid DiscoverResult"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "PASS",
+      "detail": "tools/list with no _meta: rejected with -32602"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "PASS",
+      "detail": "tools/list without clientCapabilities: rejected with -32602"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "PASS",
+      "detail": "tools/list without protocolVersion: rejected with -32602"
+    },
+    {
+      "id": "modern.unsupported-version",
+      "status": "PASS",
+      "detail": "tools/list with protocol version 1900-01-01: rejected with -32022"
+    },
+    {
+      "id": "unknown-method",
+      "status": "PASS",
+      "detail": "an unknown method: rejected with -32601"
+    },
+    {
+      "id": "tools.list",
+      "status": "PASS",
+      "detail": "14 tools over 1 page(s)"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_status",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_diff_unstaged",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_diff_staged",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_diff",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_commit",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_add",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_reset",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_log",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_create_branch",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_checkout",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_merge",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_show",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_branch",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "git_remote",
+      "detail": "inputSchema is an object schema"
+    }
+  ],
+  "scanner": "mcpfuzz 0.1.0",
+  "started": "2026-11-25T19:27:45.2562647Z",
+  "seconds": 9.9136603
+}

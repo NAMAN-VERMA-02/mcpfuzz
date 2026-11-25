@@ -1,0 +1,335 @@
+{
+  "verdict": "FINDINGS",
+  "exit_code": 1,
+  "era": "modern",
+  "protocol_version": "2026-07-28",
+  "mode": "passive",
+  "isolated": false,
+  "target": [
+    "D:/mcpfuzz-sandbox/node/node_modules/.bin/mcp-server-filesystem",
+    "D:/mcpfuzz-sandbox/work"
+  ],
+  "tools": [
+    {
+      "name": "read_file",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "read_text_file",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "read_media_file",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "read_multiple_files",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "write_file",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "idempotentHint": true,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "append_file",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "idempotentHint": false,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "edit_file",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "idempotentHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "create_directory",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "idempotentHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "list_directory",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "list_directory_with_sizes",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "directory_tree",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "move_file",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "idempotentHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "copy_file",
+      "claimed_annotations": {
+        "readOnlyHint": false,
+        "idempotentHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "search_files",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "get_file_info",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "risky_params": [
+        "path (path-like, unconstrained)"
+      ]
+    },
+    {
+      "name": "list_allowed_directories",
+      "claimed_annotations": {
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    }
+  ],
+  "checks": [
+    {
+      "id": "modern.discover",
+      "status": "PASS",
+      "detail": "server/discover returned a valid DiscoverResult"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "FINDING",
+      "detail": "tools/list with no _meta: accepted, want error -32602",
+      "evidence": "{\"result\":{\"tools\":[{\"name\":\"read_file\",\"title\":\"Read File (Deprecated)\",\"description\":\"Read the complete contents of a file as text. DEPRECATED: Use read_text_file instead.\",\"inputSchema\":{\"type\":\"ob…"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "FINDING",
+      "detail": "tools/list without clientCapabilities: accepted, want error -32602",
+      "evidence": "{\"result\":{\"tools\":[{\"name\":\"read_file\",\"title\":\"Read File (Deprecated)\",\"description\":\"Read the complete contents of a file as text. DEPRECATED: Use read_text_file instead.\",\"inputSchema\":{\"type\":\"ob…"
+    },
+    {
+      "id": "modern.missing-meta",
+      "status": "FINDING",
+      "detail": "tools/list without protocolVersion: accepted, want error -32602",
+      "evidence": "{\"result\":{\"tools\":[{\"name\":\"read_file\",\"title\":\"Read File (Deprecated)\",\"description\":\"Read the complete contents of a file as text. DEPRECATED: Use read_text_file instead.\",\"inputSchema\":{\"type\":\"ob…"
+    },
+    {
+      "id": "modern.unsupported-version",
+      "status": "FINDING",
+      "detail": "tools/list with protocol version 1900-01-01: accepted, want error -32022",
+      "evidence": "{\"result\":{\"tools\":[{\"name\":\"read_file\",\"title\":\"Read File (Deprecated)\",\"description\":\"Read the complete contents of a file as text. DEPRECATED: Use read_text_file instead.\",\"inputSchema\":{\"type\":\"ob…"
+    },
+    {
+      "id": "unknown-method",
+      "status": "PASS",
+      "detail": "an unknown method: rejected with -32601"
+    },
+    {
+      "id": "tools.list",
+      "status": "FINDING",
+      "detail": "tools/list page 1: resultType must be \"complete\"; tools/list page 1: ttlMs must be a non-negative integer; tools/list page 1: cacheScope must be \"public\" or \"private\""
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "read_file",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "read_text_file",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "read_media_file",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "read_multiple_files",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "write_file",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "append_file",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "edit_file",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "create_directory",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "list_directory",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "list_directory_with_sizes",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "directory_tree",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "move_file",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "copy_file",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "search_files",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "get_file_info",
+      "detail": "inputSchema is an object schema"
+    },
+    {
+      "id": "tools.schema",
+      "status": "PASS",
+      "tool": "list_allowed_directories",
+      "detail": "inputSchema is an object schema"
+    }
+  ],
+  "server_stderr": "Secure MCP Filesystem Server running on stdio Effective allowed directories (from the command line):   D:\\mcpfuzz-sandbox\\work ",
+  "scanner": "mcpfuzz 0.1.0",
+  "started": "2026-11-25T19:27:10.2681771Z",
+  "seconds": 5.6256899
+}

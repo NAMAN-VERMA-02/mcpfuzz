@@ -1,0 +1,18 @@
+mcpfuzz: PASS (exit 0)
+era: modern (2026-07-28) · passive scan · not isolated · 14 tools
+
+PASS         21 checks
+hint         git_status has repo_path (path-like, unconstrained)
+hint         git_diff_unstaged has repo_path (path-like, unconstrained)
+hint         git_diff_staged has repo_path (path-like, unconstrained)
+hint         git_diff has repo_path (path-like, unconstrained)
+hint         git_commit has repo_path (path-like, unconstrained)
+hint         git_add has repo_path (path-like, unconstrained)
+hint         git_reset has repo_path (path-like, unconstrained)
+hint         git_log has repo_path (path-like, unconstrained)
+hint         git_create_branch has repo_path (path-like, unconstrained)
+hint         git_checkout has repo_path (path-like, unconstrained)
+hint         git_merge has repo_path (path-like, unconstrained)
+hint         git_show has repo_path (path-like, unconstrained)
+hint         git_branch has repo_path (path-like, unconstrained)
+hint         git_remote has repo_path (path-like, unconstrained)

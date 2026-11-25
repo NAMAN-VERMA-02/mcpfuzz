@@ -1,0 +1,5 @@
+mcpfuzz: PASS (exit 0)
+era: modern (2026-07-28) · passive scan · not isolated · 1 tools
+
+PASS         8 checks
+hint         fetch has url (path-like, unconstrained)
