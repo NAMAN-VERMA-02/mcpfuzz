@@ -23,7 +23,7 @@ CI (`.github/workflows/ci.yml`): gofmt, `go vet`, `go test -race` on Linux, plai
 `go test` on Windows, govulncheck, and the Docker e2e job. Actions are pinned by SHA.
 
 ## Gaps
-- Nothing has been scanned except the two test servers in this repo.
+- Real servers have had passive scans only (`scripts/real-servers.sh`); active mode has only run against the two test servers in this repo.
 - No fuzz tests of the scanner's own response parsing.
 - The prompt-injection rules are tested against a handful of phrasings, not a corpus.
 - Process-tree cleanup is exercised on every run but not asserted by a test.

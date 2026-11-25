@@ -129,7 +129,27 @@ for the next probe, and its whole process tree, or its container, is removed at 
 - **The wording rules are a short list.** Text that gets past them can still be malicious.
 - **stdio only.** Streamable HTTP and the `Mcp-Method`/`Mcp-Name` headers are not tested yet.
 - **One modern version.** A modern server that does not support 2026-07-28 is `INCONCLUSIVE`.
-- **Only the test servers in this repo have been scanned.**
+- **Real servers: passive scans only so far.** See the next section.
+
+## Results on real servers
+
+First run, November 2026: passive scans of five reference servers from
+`modelcontextprotocol/servers`, started locally with no tool calls. Details,
+versions and exact commands are in [results/real-servers-2026-11.md](results/real-servers-2026-11.md).
+
+| Server | Version | Verdict | After checking by hand |
+|---|---|---|---|
+| filesystem | 2.4.0 | FINDINGS | 2 of 3 findings were mcpfuzz's own probe order; 1 open spec question |
+| memory | 2.2.1 | FINDINGS | same as filesystem |
+| everything | 2.3.1 | FINDINGS | same as filesystem |
+| fetch | 2026.11.18 | PASS | |
+| git | 2026.11.18 | PASS | |
+
+No server bug was confirmed. Active scans (path traversal, shell injection) were
+**not** run on any of them, because they need Docker. The demo servers in
+`testservers/` remain the only place active mode has been exercised. The run also
+exposed two things to fix in mcpfuzz itself: it reuses one process for probes that
+change connection state, and it assumes a modern server is modern-only.
 
 ## Status
 
